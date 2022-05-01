@@ -2,11 +2,11 @@ import random
 
 
 def user_choice():
-    print("\t(Enter the number of your choice)")
+    print("(Enter the number of your choice)")
     print("\t1. Rock")
     print("\t2. Paper")
     print("\t3. Scissors")
-    choice = input("\t> ")
+    choice = input("> ")
     while choice not in ("1", "2", "3"):
         choice = input("\tEnter the NUMBER of your choice (1-3) > ")
     return int(choice) - 1
@@ -18,48 +18,49 @@ def game():
     computer = choices[computer]
     user = choices[user_choice()]
 
-    print(f"\n[You chose {user} and the computer chose {computer}]\n")
+    print(f"\n[You chose {user} and the computer chose {computer}]")
+    won = """
+    +++++++++++
+    + You WON +
+    +++++++++++
+    """
+    lose = """
+    ------------
+    - You LOSE -
+    ------------
+    """
+    draw = """
+    ========
+    = DRAW =
+    ========
+    """
 
     if user == computer:
-        print("========")
-        print("= DRAW =")
-        print("========")
+        print(draw)
     elif user == "rock":
         if computer == "paper":
-            print("------------")
-            print("- You LOSE -")
-            print("------------")
+            print(lose)
         else:
-            print("+++++++++++")
-            print("+ You WON +")
-            print("+++++++++++")
+            print(won)
     elif user == "paper":
         if computer == "rock":
-            print("+++++++++++")
-            print("+ You WON +")
-            print("+++++++++++")
+            print(won)
         else:
-            print("------------")
-            print("- You LOSE -")
-            print("------------")
+            print(lose)
     else:
         if computer == "rock":
-            print("------------")
-            print("- You LOSE -")
-            print("------------")
+            print(lose)
         else:
-            print("+++++++++++")
-            print("+ You WON +")
-            print("+++++++++++")
+            print(won)
 
 
 def continuation_validation():
     user_continue = "none"
     while user_continue.lower() not in ("true", "t", "false", "f", ""):
-        print("\tDo you want to continue ?")
+        print("Do you want to continue ?")
         print("\tt(rue) / f(alse)")
         print("\t\t(default = true)")
-        user_continue = input("\t> ")
+        user_continue = input("> ")
     if user_continue in ("true", "t", ""):
         return True
     else:
@@ -67,7 +68,7 @@ def continuation_validation():
 
 
 if __name__ == "__main__":
-    print("~~~ ROCK — PAPER —SCISSORS ~~~\n")
+    print("~~~ ROCK — PAPER — SCISSORS ~~~\n")
     to_play = True
     while to_play:
         game()
